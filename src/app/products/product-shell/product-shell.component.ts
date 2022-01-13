@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Product } from '../product';
 import { State, getShowProductCode, getCurrentProduct, getProducts, getError } from '../../state/slices/products';
-import * as ProductActions from '../../state/slices/products/product.actions';
+import { ProductPageActions } from '../../state/slices/products/actions';
 
 @Component({
   templateUrl: './product-shell.component.html'
@@ -18,7 +18,7 @@ export class ProductShellComponent implements OnInit {
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.store.dispatch(ProductActions.loadProducts());
+    this.store.dispatch(ProductPageActions.loadProducts());
     this.products$ = this.store.select(getProducts);
     this.selectedProduct$ = this.store.select(getCurrentProduct);
     this.displayCode$ = this.store.select(getShowProductCode);
@@ -26,30 +26,30 @@ export class ProductShellComponent implements OnInit {
   }
 
   checkChanged(): void {
-    this.store.dispatch(ProductActions.toggleProductCode());
+    this.store.dispatch(ProductPageActions.toggleProductCode());
   }
 
   newProduct(): void {
-    this.store.dispatch(ProductActions.initCurrentProduct());
+    this.store.dispatch(ProductPageActions.initCurrentProduct());
   }
 
   productSelected(product: Product): void {
-    this.store.dispatch(ProductActions.setCurrentProduct({ currentProductId: product.id }));
+    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: product.id }));
   }
 
   createProduct(product: Product): void {
-    this.store.dispatch(ProductActions.createProduct({ product }));
+    this.store.dispatch(ProductPageActions.createProduct({ product }));
   }
 
   updateProduct(product: Product): void {
-    this.store.dispatch(ProductActions.updateProduct({ product }));
+    this.store.dispatch(ProductPageActions.updateProduct({ product }));
   }
 
   deleteProduct(product: Product): void {
-    this.store.dispatch(ProductActions.deleteProduct({ productId: product.id }));
+    this.store.dispatch(ProductPageActions.deleteProduct({ productId: product.id }));
   }
 
   clearProduct(): void {
-    this.store.dispatch(ProductActions.clearCurrentProduct());
+    this.store.dispatch(ProductPageActions.clearCurrentProduct());
   }
 }
