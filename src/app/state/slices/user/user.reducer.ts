@@ -7,13 +7,11 @@ export interface UserState {
     currentUser: User;
 }
 
-// initial state
 const initialState: UserState = {
     maskUserName: true,
     currentUser: null,
 }
 
-// reducer
 export const userReducer = createReducer<UserState>(
     initialState,
     on(UserActions.maskUserName, (state): UserState => {

@@ -9,7 +9,6 @@ export interface ProductState {
     error: string;
 }
 
-// initial state
 const initialState: ProductState = {
     showProductCode: true,
     currentProductId: null,
@@ -17,7 +16,6 @@ const initialState: ProductState = {
     error: ''
 }
 
-// reducer
 export const productReducer = createReducer<ProductState>(
     initialState,
     on(ProductPageActions.toggleProductCode, (state): ProductState => {
