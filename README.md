@@ -1,6 +1,4 @@
-# APM
-
-Starter files with no NgRx added.
+# CRUD Angular - NgRx
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
